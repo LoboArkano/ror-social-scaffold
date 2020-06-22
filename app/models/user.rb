@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
 
+  # Array of users who are already friends
   def friends
     friends_array = friendships.map{|friendship| friendship.friend if friendship.confirmed}
     friends_array + inverse_friendships.map{|friendship| friendship.user if friendship.confirmed}
@@ -26,5 +27,17 @@ class User < ApplicationRecord
   # Users who have requested to be friends
   def friend_requests
     inverse_friendships.map{|friendship| friendship.user if !friendship.confirmed}.compact
+  end
+
+  # Confirm user as friend
+  def confirm_friend(user)
+    friendship = inverse_friendships.find{|friendship| friendship.user == user}
+    friendship.confirmed = true
+    friendship.save
+  end
+
+  # Checks if user is a friend
+  def friend?(user)
+    friends.include?(user)
   end
 end
