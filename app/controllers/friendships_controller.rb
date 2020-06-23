@@ -4,7 +4,7 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    @friendship = current_user.friendships.new(friendship_params)
+    @friendship = current_user.friendships.new
     @friendship.user_id = current_user.id
     @friendship.friend_id = params[:format]
     @friendship.confirmed = false
@@ -26,10 +26,16 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
+    friendship = Friendship.find_by(user_id: params[:format], friend_id: current_user.id)
+    if friendship.destroy
+      redirect_to root_path, alert: "Friend request rejected!"
+    else
+      redirect_to root_path, alert: @friendship.errors.full_messages.join('. ').to_s
+    end
   end
 
-  private
-  def friendship_params
-    params.require(:friendship).permit(:user_id, :friend_id, :confirmed)
-  end
+  # private
+  # def friendship_params
+  #   params.require(:friendships).permit(:user_id, :friend_id, :confirmed)
+  # end
 end

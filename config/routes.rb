@@ -3,13 +3,13 @@ Rails.application.routes.draw do
   get 'friendships/new'
   get 'friendships/create'
   get 'friendships/update'
-  #get 'friendships/destroy'
+  get 'friendships/destroy'
   root 'posts#index'
 
   devise_for :users
 
   resources :users, only: [:index, :show]
-  resources :friendships, only:[:create, :update]
+  resources :friendships, only:[:create, :update, :destroy]
   resources :posts, only: [:index, :create] do
     resources :comments, only: [:create]
     resources :likes, only: [:create, :destroy]

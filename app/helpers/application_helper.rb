@@ -35,7 +35,7 @@ module ApplicationHelper
     friend_request_sent = user.friend_requests
 
     if friend_request.include?(user) && pending_friend.include?(current_user)
-      link_to(' Accept friend request',  friendships_update_path(user), class: 'profile-link')
+      link_to(' Accept friend request',  friendships_update_path(user), class: 'profile-link') + link_to(' Reject friend request', friendships_destroy_path(user), class: 'profile-link')
     elsif friend
       content_tag(:span, ' Friend', class: 'profile-link')
     elsif friend_request_sent.include?(current_user)
