@@ -1,6 +1,6 @@
 <section class="user-section">
   <h2 class = "h2-user"><%= "Name: #{@user.name}" %></h2>
-  <%= button_to "Add as a friend", friendships_create_path(@user), :method => "get", class: "btn btn-primary" %>
+  <%= show_friend_request(@user) %>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
