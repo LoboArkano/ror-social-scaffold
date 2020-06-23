@@ -17,16 +17,14 @@ module ApplicationHelper
   end
 
   def show_users
-    @users = @users.filter {|user| user.id != current_user.id}  
-    content_tag :ul, class: "users-list" do
-      
+    @users = @users.filter { |user| user.id != current_user.id }
+    content_tag :ul, class: 'users-list' do
       @users.collect do |user|
         tag1 = content_tag(:span, link_to(' See Profile', user_path(user), class: 'profile-link'))
-        concat(content_tag(:li, content_tag(:span, user.name ) + tag1 + show_friend_request(user)))
+        concat(content_tag(:li, content_tag(:span, user.name) + tag1 + show_friend_request(user)))
       end
     end
   end
-  
 
   def show_friend_request(user)
     friend_request = current_user.friend_requests
@@ -35,14 +33,17 @@ module ApplicationHelper
     friend_request_sent = user.friend_requests
 
     if friend_request.include?(user) && pending_friend.include?(current_user)
-      link_to(' Accept friend request',  friendships_update_path(user), class: 'profile-link') + link_to(' Reject friend request', friendships_destroy_path(user), class: 'profile-link')
+      link_to(' Accept friend request',
+              friendships_update_path(user),
+              class: 'profile-link') + link_to(' Reject friend request',
+                                               friendships_destroy_path(user), class: 'profile-link')
     elsif friend
       content_tag(:span, ' Friend', class: 'profile-link')
     elsif friend_request_sent.include?(current_user)
       content_tag(:span, ' Friend request sent', class: 'profile-link')
     elsif user.id == current_user.id
     else
-      link_to(' Add as a friend',  friendships_create_path(user), class: 'profile-link')
+      link_to(' Add as a friend', friendships_create_path(user), class: 'profile-link')
     end
   end
 end

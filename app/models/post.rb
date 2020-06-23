@@ -9,10 +9,10 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   def count_comments(post)
-    count = Post.find(post.id).comments.count
+    Post.find(post.id).comments.count
   end
 
   def count_likes(post)
-    count = Post.find(post.id).likes.count
+    Post.find(post.id).likes.count
   end
 end
