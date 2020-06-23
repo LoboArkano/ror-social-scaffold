@@ -40,6 +40,7 @@ module ApplicationHelper
       content_tag(:span, ' Friend', class: 'profile-link')
     elsif friend_request_sent.include?(current_user)
       content_tag(:span, ' Friend request sent', class: 'profile-link')
+    elsif user.id == current_user.id
     else
       link_to(' Add as a friend',  friendships_create_path(user), class: 'profile-link')
     end
