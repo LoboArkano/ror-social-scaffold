@@ -4,7 +4,10 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    @friendship = current_user.friendships.new(:user_id => current_user.id, :friend_id => params[:format], :confirmed => false)
+    @friendship = current_user.friendships.new(friendship_params)
+    @friendship.user_id = current_user.id
+    @friendship.friend_id = params[:format]
+    @friendship.confirmed = false
     if @friendship.save
       redirect_to users_path, notice: "Friend request sent."
     else
@@ -13,10 +16,9 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    @friendship = Friendship.find_by(user_id: params[:format])
-    @friendship.confirmed = true
+    user = User.find(params[:format])
 
-    if @friendship.save
+    if current_user.confirm_friend(user)
       redirect_to user_path(params[:format]), notice: "Friend request accepted."
     else
       redirect_to root_path, alert: @friendship.errors.full_messages.join('. ').to_s
@@ -24,5 +26,10 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+  def friendship_params
+    params.require(:friendship).permit(:user_id, :friend_id, :confirmed)
   end
 end
