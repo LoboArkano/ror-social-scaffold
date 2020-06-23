@@ -15,4 +15,20 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post, class: 'like-link')
     end
   end
+
+  def show_users
+    @users.collect do |user|
+      concat(content_tag(:li, 'Name: ', user.name))
+    end
+  end
+  #, content_tag(:span, class: "profile-link") + link_to 'See Profile', user_path(user), class: 'profile-link' + show_friend_request(user)
+
+  def show_friend_request(user)
+    friend_request = current_user.friend_requests
+    if friend_request.include?(user)
+      link_to('Accept friend request',  friendships_create_path(user), class: 'profile-link')
+    else
+      link_to('Add as a friend',  friendships_create_path(user), class: 'profile-link')
+    end
+  end
 end
