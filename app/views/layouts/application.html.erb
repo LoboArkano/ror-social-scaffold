@@ -19,7 +19,7 @@
         </div>
         <% if user_signed_in? %>
           <div class="menu-item">
-            <%= current_user.name %>
+            <%= link_to current_user.name, root_path %>
           </div>
         <% end %>
       </div>
