@@ -31,7 +31,7 @@ module ApplicationHelper
   def show_friend_request(user)
     friend_request = current_user.friend_requests
     if friend_request.include?(user)
-      link_to(' Accept friend request',  friendships_create_path(user), class: 'profile-link')
+      link_to(' Accept friend request',  friendships_update_path(user), class: 'profile-link')
     else
       link_to(' Add as a friend',  friendships_create_path(user), class: 'profile-link')
     end
