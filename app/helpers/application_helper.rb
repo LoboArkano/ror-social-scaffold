@@ -17,18 +17,23 @@ module ApplicationHelper
   end
 
   def show_users
-    @users.collect do |user|
-      concat(content_tag(:li, 'Name: ', user.name))
+    @users = @users.filter {|user| user.id != current_user.id}  
+    content_tag :ul, class: "users-list" do
+      
+      @users.collect do |user|
+        tag1 = content_tag(:span, link_to(' See Profile', user_path(user), class: 'profile-link'))
+        concat(content_tag(:li, content_tag(:span, user.name ) + tag1 + show_friend_request(user)))
+      end
     end
   end
-  #, content_tag(:span, class: "profile-link") + link_to 'See Profile', user_path(user), class: 'profile-link' + show_friend_request(user)
+  
 
   def show_friend_request(user)
     friend_request = current_user.friend_requests
     if friend_request.include?(user)
-      link_to('Accept friend request',  friendships_create_path(user), class: 'profile-link')
+      link_to(' Accept friend request',  friendships_create_path(user), class: 'profile-link')
     else
-      link_to('Add as a friend',  friendships_create_path(user), class: 'profile-link')
+      link_to(' Add as a friend',  friendships_create_path(user), class: 'profile-link')
     end
   end
 end
