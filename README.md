@@ -72,7 +72,7 @@ To run only model tests run this instead:
 
 For views tests only, execute this:
 
-````
+```
     bundle exec rspec spec/views
 
 ```
