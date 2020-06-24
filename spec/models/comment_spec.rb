@@ -2,7 +2,7 @@ require_relative '../rails_helper'
 
 RSpec.describe Comment, type: :model do
   context 'creating comment' do
-    it 'content cannot be blank ' do 
+    it 'content cannot be blank ' do
       expect { Comment.create! }.to raise_error(ActiveRecord::RecordInvalid)
     end
   end

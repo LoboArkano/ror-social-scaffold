@@ -3,7 +3,7 @@ require_relative '../rails_helper'
 RSpec.describe 'Webpage workflow', type: :system do
   describe 'Navigate the webpage' do
     it 'creates a new user and add friendship relationship' do
-      User.create(:name => "Legolas",:email => 'legolas@hotmail.com',:password => 'thelord')
+      User.create(name: 'Legolas', email: 'legolas@hotmail.com', password: 'thelord')
       visit new_user_registration_path
       fill_in 'Name', with: 'Frodo'
       fill_in 'Email', with: 'frodo@hotmail.com'

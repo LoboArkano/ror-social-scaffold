@@ -2,7 +2,7 @@ require_relative '../rails_helper'
 
 RSpec.describe Post, type: :model do
   context 'creating post' do
-    it 'content cannot be blank ' do #
+    it 'content cannot be blank ' do
       expect { Post.create! }.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
