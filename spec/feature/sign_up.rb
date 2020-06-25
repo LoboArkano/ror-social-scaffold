@@ -31,6 +31,6 @@ RSpec.describe 'Webpage workflow', type: :system do
     fill_in 'Password confirmation', with: 'thelord'
     click_on 'Sign up'
     sleep(3)
-    expect(page).to have_content("Welcome! You have signed up successfully.")
+    expect(page).to have_content('Welcome! You have signed up successfully.')
   end
 end
