@@ -40,4 +40,8 @@ class User < ApplicationRecord
   def friend?(user)
     friends.include?(user)
   end
+
+  def friends_post(current_user)
+    Post.where(user: friends).or(Post.where(user: current_user))
+  end
 end
