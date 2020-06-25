@@ -7,6 +7,16 @@ RSpec.describe Comment, type: :model do
     end
   end
 
+  context 'checking user who commented' do
+    let(:user) {  User.create(:name => "Jar Jar", :email => "123@email.com", :password => "123456") }
+    let(:post) { Post.create(:content => "Bla bla", :user_id => user.id )}
+    let(:comment) {Comment.create(:content => "Test", :post_id => post.id, :user_id => user.id )}
+    
+    it 'user who commented should be Jar Jar' do
+      expect(comment.user.name).to eql("Jar Jar")
+    end
+  end
+
   context 'testing associations' do
     it 'should have one user' do
       c = Comment.reflect_on_association(:user)
