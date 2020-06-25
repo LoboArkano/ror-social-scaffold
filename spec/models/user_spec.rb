@@ -7,15 +7,15 @@ RSpec.describe User, type: :model do
     end
   end
 
-  context 'User can create content' do 
-    let(:user) {  User.create(:name => "Jar Jar", :email => "123@email.com", :password => "123456") }
-    let(:post) { Post.create(:content => "Bla bla", :user_id => user.id )}
-    let(:comment) {Comment.create(:content => "Test", :post_id => post.id, :user_id => user.id )}
+  context 'User can create content' do
+    let(:user) { User.create(name: 'Jar Jar', email: '123@email.com', password: '123456') }
+    let(:post) { Post.create(content: 'Bla bla', user_id: user.id) }
+    let(:comment) { Comment.create(content: 'Test', post_id: post.id, user_id: user.id) }
     it 'post have content Bla bla' do
-      expect(post.content).to eql("Bla bla")
+      expect(post.content).to eql('Bla bla')
     end
     it 'comment has text Test' do
-      expect(comment.content).to eql("Test")
+      expect(comment.content).to eql('Test')
     end
   end
 
