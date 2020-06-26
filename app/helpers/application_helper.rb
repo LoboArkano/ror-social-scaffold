@@ -30,7 +30,6 @@ module ApplicationHelper
     friend_request = current_user.friend_requests
     pending_friend = user.pending_friends
     friend = current_user.friend?(user)
-    friend_request_sent = user.friend_requests
 
     if friend_request.include?(user) && pending_friend.include?(current_user)
       link_to(' Accept friend request',
@@ -39,7 +38,7 @@ module ApplicationHelper
                                                friendships_destroy_path(user), class: 'profile-link')
     elsif friend
       content_tag(:span, ' Friend', class: 'profile-link')
-    elsif friend_request_sent.include?(current_user)
+    elsif pending_friend.include?(current_user)
       content_tag(:span, ' Friend request sent', class: 'profile-link')
     elsif user.id == current_user.id
     else
