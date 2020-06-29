@@ -10,9 +10,9 @@ module ApplicationHelper
   def like_or_dislike_btn(post)
     like = Like.find_by(post: post, user: current_user)
     if like
-      link_to(content_tag(:i, nil, class: ["far fa-thumbs-down likes-comments"]), post_like_path(id: like.id, post_id: post.id), method: :delete, class: 'like-link')
+      link_to(content_tag(:span, 'Dislike!', class: "hidden") + content_tag(:i, nil, class: ["far fa-thumbs-down likes-comments"]), post_like_path(id: like.id, post_id: post.id), method: :delete, class: 'like-link')
     else
-      link_to(content_tag(:i, nil, class: ["far fa-thumbs-up likes-comments"]), post_likes_path(post_id: post.id), method: :post, class: 'like-link')
+      link_to(content_tag(:i, nil, class: ["far fa-thumbs-up likes-comments"]) + content_tag(:span, "Like!", class: "hidden"), post_likes_path(post_id: post.id), method: :post, class: 'like-link')
     end
   end
 
@@ -45,9 +45,9 @@ module ApplicationHelper
     friend_request_sent = user.friend_requests
 
     if friend_request.include?(user) && pending_friend.include?(current_user)
-        content_tag(:div, content_tag(:span, "Accept?",class: "accept-text") + content_tag(:div, link_to(content_tag(:i, nil,class: ["fas fa-check"]),
+        content_tag(:div, content_tag(:span, "Accept?",class: "accept-text") + content_tag(:div, link_to(content_tag(:span, 'Accept friend request', class: "hidden") + content_tag(:i, nil,class: ["fas fa-check"]),
         friendships_update_path(user),
-        class: 'profile-link profile-link-accept') + link_to(content_tag(:i, nil,class: ["fas fa-times"]),
+        class: 'profile-link profile-link-accept') + link_to(content_tag(:span, 'Reject friend request', class: "hidden") + content_tag(:i, nil,class: ["fas fa-times"]),
                                          friendships_destroy_path(user), class: 'profile-link profile-link-reject') ), class: "accept-container")
      
     elsif friend
@@ -56,7 +56,7 @@ module ApplicationHelper
       content_tag(:span, ' Request sent', class: 'request-text')
     elsif user.id == current_user.id
     else
-      content_tag(:span, link_to(content_tag(:i, nil, class: ["fas fa-user-plus"]), friendships_create_path(user), class: 'profile-link'))
+      content_tag(:span, link_to(content_tag(:i, nil, class: ["fas fa-user-plus"]) + content_tag(:span, 'Add as a friend', class: "hidden"), friendships_create_path(user), class: 'profile-link'))
     end
   end
 

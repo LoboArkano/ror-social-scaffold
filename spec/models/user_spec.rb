@@ -100,6 +100,14 @@ RSpec.describe User, type: :model do
 
       expect(frodo.friends_post(bilbo).first.content).to include(bilbo_post.content)
     end
+
+    it 'returns the latest five friends' do
+      frodo
+      bilbo
+      friendship_1
+
+      expect(frodo.latest_friends).to include(bilbo)
+    end
   end
   # rubocop:enable Metrics/BlockLength
 end
