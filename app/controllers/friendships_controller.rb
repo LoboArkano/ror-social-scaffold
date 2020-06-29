@@ -20,7 +20,7 @@ class FriendshipsController < ApplicationController
     user = User.find(params[:format])
 
     if current_user.confirm_friend(user)
-      Friendship.create(:user_id => current_user.id, :friend_id => user.id, :confirmed => true)
+      Friendship.create(user_id: current_user.id, friend_id: user.id, confirmed: true)
       redirect_to user_path(params[:format]), notice: 'Friend request accepted.'
     else
       redirect_to root_path, alert: @friendship.errors.full_messages.join('. ').to_s
