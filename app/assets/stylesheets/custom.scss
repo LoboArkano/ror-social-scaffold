@@ -59,7 +59,6 @@ a {
       margin-right: 20px;
     }
 
-
     .menu-item-right {
       display: flex;
       align-items: center;
@@ -266,6 +265,7 @@ form {
   margin-right: 5px;
   color: $primary-color;
 }
+
 .counter {
   font-size: 0.7em;
   color: $primary-color-dark;
@@ -280,7 +280,7 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color:$primary-color-light;
+  background-color: $primary-color-light;
   border-radius: 10px;
 
   h3 {
@@ -368,7 +368,6 @@ form {
   display: flex;
   justify-content: space-around;
   align-items: baseline;
-
 }
 
 .latest-friends-section {
@@ -406,9 +405,6 @@ form {
     text-transform: capitalize;
     font-size: 1.2em;
   }
-
-
-  
 }
 
 .profile-link {
@@ -483,7 +479,6 @@ form {
   border-radius: 5px;
   padding: 10px;
 
- 
 
 
   .h2-user {

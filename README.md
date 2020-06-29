@@ -4,11 +4,11 @@
 
 ## Screenshots
 
-![Screenshot1](https://user-images.githubusercontent.com/52765379/85600696-ad888900-b61b-11ea-886e-a82977d619ca.png)
+![image](https://user-images.githubusercontent.com/33432289/86039758-86113200-ba08-11ea-9119-9b3c9795b157.png)
 
-![Screenshot2](https://user-images.githubusercontent.com/52765379/85600848-d01aa200-b61b-11ea-8f59-65090f298e65.png)
+![image](https://user-images.githubusercontent.com/33432289/86039807-988b6b80-ba08-11ea-8b35-a6b94c68052b.png)
 
-![Screenshot3](https://user-images.githubusercontent.com/52765379/85600919-e45e9f00-b61b-11ea-86e6-0f466b9e0fb1.png)
+![image](https://user-images.githubusercontent.com/33432289/86039839-a93be180-ba08-11ea-86e5-957bdc31d5a6.png)
 
 ## Built With
 
@@ -73,7 +73,7 @@ To run only model tests run this instead:
 For views tests only, execute this:
 
 ```
-    bundle exec rspec spec/views
+    bundle exec rspec spec/feature
 
 ```
 
