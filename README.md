@@ -1,15 +1,23 @@
-# Scaffold for social media app with Ruby on Rails
+# Social Media Website
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> This project consist in a social media web application with features that includes sending friendship invitations, accepting or declining them. Also the capacity of creating posts and liking them.
+
+## Screenshots
+
+![image](https://user-images.githubusercontent.com/33432289/86039758-86113200-ba08-11ea-9119-9b3c9795b157.png)
+
+![image](https://user-images.githubusercontent.com/33432289/86039807-988b6b80-ba08-11ea-8b35-a6b94c68052b.png)
+
+![image](https://user-images.githubusercontent.com/33432289/86039839-a93be180-ba08-11ea-86e5-957bdc31d5a6.png)
 
 ## Built With
 
-- Ruby v2.7.0
-- Ruby on Rails v5.2.4
+- Ruby v2.7.1
+- Ruby on Rails v5.2.3
 
 ## Live Demo
 
-TBA
+[Live version] (https://stay-in-touch-app.herokuapp.com)
 
 
 ## Getting Started
@@ -24,7 +32,7 @@ Postgres: >=9.5
 
 ### Setup
 
-Instal gems with:
+Install gems with:
 
 ```
 bundle install
@@ -36,8 +44,6 @@ Setup database with:
    rails db:create
    rails db:migrate
 ```
-
-
 
 ### Usage
 
@@ -51,25 +57,44 @@ Open `http://localhost:3000/` in your browser.
 
 ### Run tests
 
+To run all tests use this command:
+
 ```
-    rpsec --format documentation
+    bundle exec rspec
+    
+```
+To run only model tests run this instead:
+
+```
+    bundle exec rspec spec/models
+
 ```
 
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
+For views tests only, execute this:
 
-### Deployment
+```
+    bundle exec rspec spec/feature
 
-TBA
+```
 
 ## Authors
 
-TBA
+👤 **Roberto Perez Jimenez**
 
+- Github: [@LoboArkano](https://github.com/LoboArkano)
+- Twitter: [@LoboArcano92](https://twitter.com/LoboArcano92)
+- Linkedin: [linkedin](https://www.linkedin.com/in/jose-roberto-perez-jimenez/)
+
+👤 **Fernando Bahamondes**
+
+- Github: [@ferbaco86](https://github.com/ferbaco86)
+- Twitter: [@ferbac0](https://twitter.com/ferbac0)
+- Linkedin: [linkedin](https://www.linkedin.com/in/fernando-bahamondes-correa)
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/ferbaco86/ror-social-scaffold/issues).
 
 ## Show your support
 
@@ -77,9 +102,8 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-TBA
-
+This project is MIT licensed.
