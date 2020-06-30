@@ -8,6 +8,7 @@ class FriendshipsController < ApplicationController
     @friendship.user_id = current_user.id
     @friendship.friend_id = params[:format]
     @friendship.confirmed = false
+
     if @friendship.save
       redirect_to users_path, notice: 'Friend request sent.'
     else
@@ -19,6 +20,7 @@ class FriendshipsController < ApplicationController
     user = User.find(params[:format])
 
     if current_user.confirm_friend(user)
+      Friendship.create(user_id: current_user.id, friend_id: user.id, confirmed: true)
       redirect_to user_path(params[:format]), notice: 'Friend request accepted.'
     else
       redirect_to root_path, alert: @friendship.errors.full_messages.join('. ').to_s
@@ -27,15 +29,11 @@ class FriendshipsController < ApplicationController
 
   def destroy
     friendship = Friendship.find_by(user_id: params[:format], friend_id: current_user.id)
+
     if friendship.destroy
       redirect_to root_path, alert: 'Friend request rejected!'
     else
       redirect_to root_path, alert: @friendship.errors.full_messages.join('. ').to_s
     end
   end
-
-  # private
-  # def friendship_params
-  #   params.require(:friendships).permit(:user_id, :friend_id, :confirmed)
-  # end
 end

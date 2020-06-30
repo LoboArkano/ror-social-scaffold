@@ -17,7 +17,7 @@ RSpec.describe 'Webpage workflow', type: :system do
       click_on 'Add as a friend'
       sleep(3)
       expect(page).to have_content('Friend request sent.')
-      click_on 'Sign out'
+      click_on 'Sign Out'
       sleep(3)
       fill_in 'Email', with: 'legolas@hotmail.com'
       fill_in 'Password', with: 'thelord'
