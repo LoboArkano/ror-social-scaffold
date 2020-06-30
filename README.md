@@ -17,7 +17,7 @@
 
 ## Live Demo
 
-TBA
+[Live version] (https://stay-in-touch-app.herokuapp.com)
 
 
 ## Getting Started
